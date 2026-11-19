@@ -64,8 +64,13 @@ public class GitHubRepositoryService {
                 .map(responseEntityMapper::entityToResponseMapper)
                 .toList();
 
+        String message = responseItems.isEmpty()
+                ? "No repositories found"
+                : "Repositories fetched and saved successfully";
+
+
         return new GitHubSearchApiResponse(
-                "Repositories fetched and saved successfully",
+                message,
                 responseItems
         );
 
