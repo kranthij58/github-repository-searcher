@@ -1,10 +1,7 @@
 
 package com.kranthi.github_searcher.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
 package com.kranthi.github_searcher.controller;
 
+import com.kranthi.github_searcher.dto.GitHubSearchApiResponse;
 import com.kranthi.github_searcher.dto.GitHubSearchRequest;
+import com.kranthi.github_searcher.dto.GitHubSearchResponse;
 import com.kranthi.github_searcher.service.GitHubRepositoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,10 @@ public class GitHubRepositoryController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<?> searchRequest(
-            @RequestBody GitHubSearchRequest searchRequest) {
+    public ResponseEntity<GitHubSearchApiResponse> searchRequest(@RequestBody GitHubSearchRequest searchRequest) {
 
-        repositoryService.searchAndSaveRepositories(searchRequest);
-        return ResponseEntity.ok("Controller is working");
+        GitHubSearchApiResponse searchApiResponse = repositoryService.searchAndSaveRepositories(searchRequest);
+        return ResponseEntity.ok(searchApiResponse);
     }
 
 }

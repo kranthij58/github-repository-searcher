@@ -29,8 +29,6 @@ public class GitHubApiClient {
                         .queryParam("q", searchQuery)
                         .queryParam("sort", request.getSort())
                         .queryParam("order", "desc")
-                        .queryParam("per_page", 100)
-                        .queryParam("page", 1)
                         .build())
                 .retrieve()
                 .body(GitHubSearchResponse.class);
