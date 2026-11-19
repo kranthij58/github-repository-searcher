@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
+// the list of repositories returned by the POST endpoint after saving.
 @Getter
 @Setter
 @AllArgsConstructor

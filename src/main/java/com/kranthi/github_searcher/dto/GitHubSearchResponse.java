@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.util.List;
 
+// Response received from GitHub after performing a repository search.
 @Getter
 @Setter
 @ToString

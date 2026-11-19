@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.time.Instant;
 
+// represents the details of each repository returned by GitHub.
 @Getter
 @Setter
 @ToString

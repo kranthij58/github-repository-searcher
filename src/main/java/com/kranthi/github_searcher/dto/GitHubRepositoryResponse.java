@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.time.Instant;
 
+// Repository details returned to the client.
 @Getter
 @Setter
 @NoArgsConstructor
