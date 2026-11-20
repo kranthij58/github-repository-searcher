@@ -251,7 +251,23 @@ docker logs github-searcher
 
 ## 14. Deployment
 
-Deployment details and the live application URL will be added after deployment.
+The application is deployed on Render using Docker. It connects to a cloud-hosted PostgreSQL database on Neon.
+
+**Live Application:**
+
+https://github-repository-searcher-vprw.onrender.com
+
+**Live API Documentation (Swagger UI):**
+
+https://github-repository-searcher-vprw.onrender.com/swagger-ui/index.html
+
+**Deployment Platform:** Render
+
+**Containerization:** Docker
+
+**Database Hosting:** Neon PostgreSQL
+
+**Note:** The free Render instance may spin down after inactivity, so the first request after a period of inactivity may take longer to respond.
 
 ## 15. Design Decisions and Trade-offs
 
