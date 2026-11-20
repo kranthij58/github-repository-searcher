@@ -47,12 +47,14 @@ The GET endpoint retrieves stored repositories and applies the requested filters
 - **Language:** Java 21
 - **Framework:** Spring Boot
 - **API Integration:** Spring RestClient
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL (Neon)
 - **ORM:** Spring Data JPA, Hibernate
 - **Build Tool:** Maven
 - **API Documentation:** Springdoc OpenAPI / Swagger UI
 - **Testing:** JUnit 5, Mockito, MockMvc, H2, MockWebServer
 - **Code Coverage:** JaCoCo
+- **Containerization:** Docker
+- **Container Image:** Eclipse Temurin 21 JRE
 
 ## 6. API Documentation
 
@@ -115,7 +117,7 @@ Appropriate HTTP status codes and structured error responses are returned to the
 
 ## 9. Database Design
 
-The application uses PostgreSQL to persist GitHub repository information.
+The application uses Neon PostgreSQL, a cloud-hosted PostgreSQL database to persist GitHub repository information.
 
 Each repository is identified by its GitHub repository ID, which is used as the primary key.
 
@@ -157,6 +159,7 @@ The application uses environment variables for database configuration.
 ```text
 jdbc:postgresql://<host>/<database>?sslmode=require
 ```
+Create a `.env` file using `.env.example` as a reference and configure the database credentials.
 
 Sensitive credentials are kept outside the source code and should not be committed to version control.
 
@@ -194,11 +197,63 @@ mvn spring-boot:run
 
 `http://localhost:8080/swagger-ui/index.html`
 
-## 13. Deployment
+## 13. Run with Docker
+
+### Prerequisites
+
+- Docker Desktop
+
+### Build Docker Image
+
+Build the application image from the project root:
+
+```bash
+docker build -t github-repository-searcher .
+```
+
+### Run the Container
+
+Configure the database environment variables in a local `.env` file using `.env.example` as a reference.
+
+Start the container:
+
+```bash
+docker run --name github-searcher -p 8080:8080 --env-file .env github-repository-searcher
+```
+
+### Access the Application
+
+Swagger UI:
+
+`http://localhost:8080/swagger-ui/index.html`
+
+### Container Management
+
+Stop the container:
+
+```bash
+docker stop github-searcher
+```
+
+Remove the container:
+
+```bash
+docker rm github-searcher
+```
+
+View container logs:
+
+```bash
+docker logs github-searcher
+```
+
+**Note:** The `.env` file contains sensitive database credentials and must not be committed to version control.
+
+## 14. Deployment
 
 Deployment details and the live application URL will be added after deployment.
 
-## 14. Design Decisions and Trade-offs
+## 15. Design Decisions and Trade-offs
 
 - **Spring RestClient:** Used to communicate with the GitHub REST API.
 - **Layered Architecture:** Separates HTTP handling, business logic, external API communication, and persistence.
